@@ -49,7 +49,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBox Grid.Row="1" x:Name="UserInput"/>
-        <Button Grid.Row="2" Click="getAnswer"/>
+        <Button Grid.Row="2" />
         <TextBlock Grid.Row="3" Text="AiAnswer" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name = "AiAnswer"/>
     </Grid>
 </Window>

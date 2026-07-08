@@ -40,21 +40,5 @@ public partial class MainWindow : Window
     }
 
 
-
-    //Test function
     
-    AiModel model = new AiModel
-    {
-        model = "nvidia/nemotron-3-ultra-550b-a55b:free"
-    };
-    
-    public void getAnswer(object? sender, RoutedEventArgs e)
-    {
-        if (AiClient.apiKey != string.Empty)
-        {
-            Console.WriteLine(AiClient.apiKey);
-            AiClient.setKey(AiClient.apiKey);
-            AiAnswer.Text = model.getRespose(UserInput.Text);
-        }
-    }
 }

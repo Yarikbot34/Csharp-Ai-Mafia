@@ -9,7 +9,7 @@ public class AiModel
 {
     
     public string name;
-    public string model;
+    public OpenRouterModel model;
 
 
     public string getRespose(string message)
@@ -17,7 +17,7 @@ public class AiModel
         try
         {
             AiClient.AddUserMessage(message);
-            ChatCompletion completion = AiClient.client.GetChatClient(model).CompleteChat(AiClient.messages);
+            ChatCompletion completion = AiClient.client.GetChatClient(model.url).CompleteChat(AiClient.messages);
             
             return $"\nОтвет: {completion.Content[0].Text}";
         }
