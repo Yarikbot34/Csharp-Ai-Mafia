@@ -32,8 +32,7 @@ public partial class MainWindow : Window
             var answ = await client.SendAsync(request);
             var responseBody = await answ.Content.ReadAsStringAsync();
             var rootNode = JsonNode.Parse(responseBody);
-            List<OpenRouterModel> data = rootNode["data"].Deserialize<List<OpenRouterModel>>();
-            foreach(var item in data) Console.WriteLine(item.url);
+            OpenRouterModel.SetModelList( rootNode["data"].Deserialize<List<OpenRouterModel>>());
             return responseBody;
         }
         catch (Exception e)
