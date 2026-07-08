@@ -13,7 +13,6 @@ namespace AiMafia.Views;
 
 public partial class MainWindow : Window
 {
-    public string key = "";
     
     private class resp
     {public List<OpenRouterModel> data; }
@@ -22,25 +21,7 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    public async Task<string> getModelList()
-    {
-        using HttpClient client = new HttpClient();
-        try
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://openrouter.ai/api/v1/models?category=roleplay");
-            request.Headers.Add("Authorization", $"Bearer {key}");
-            var answ = await client.SendAsync(request);
-            var responseBody = await answ.Content.ReadAsStringAsync();
-            var rootNode = JsonNode.Parse(responseBody);
-            OpenRouterModel.SetModelList( rootNode["data"].Deserialize<List<OpenRouterModel>>());
-            return responseBody;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            return string.Empty;
-        }
-    }
+
 
     //Test function
     
@@ -51,11 +32,11 @@ public partial class MainWindow : Window
     
     public void getAnswer(object? sender, RoutedEventArgs e)
     {
-        key = APIKey.Text;
-        if (key != string.Empty)
+        AiClient.apiKey = APIKey.Text;
+        if (AiClient.apiKey != string.Empty)
         {
-            Console.WriteLine(key);
-            AiClient.setKey(key);
+            Console.WriteLine(AiClient.apiKey);
+            AiClient.setKey(AiClient.apiKey);
             AiAnswer.Text = model.getRespose(UserInput.Text);
         }
     }
