@@ -1,6 +1,9 @@
-﻿namespace AiMafia.ViewModels;
+﻿using System.Collections.ObjectModel;
+using AiMafia.Models;
+using AiMafia.Views;
+namespace AiMafia.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    ObservableCollection<OpenRouterModel> ViewAiModels { get; } = new ObservableCollection<OpenRouterModel>() ;
 }

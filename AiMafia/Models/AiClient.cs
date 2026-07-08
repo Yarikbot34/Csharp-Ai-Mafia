@@ -21,7 +21,7 @@ public static class AiClient
         using HttpClient client = new HttpClient();
         try
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://openrouter.ai/api/v1/models?category=roleplay");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://openrouter.ai/api/v1/models");
             request.Headers.Add("Authorization", $"Bearer {apiKey}");
             
             var answ = await client.SendAsync(request);
