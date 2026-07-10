@@ -1,3 +1,4 @@
+using System;
 using AiMafia.Models;
 using Avalonia;
 using Avalonia.Controls;
@@ -15,12 +16,19 @@ public partial class AuthorizationWindow : Window
 
     public async void OnContinueClick(object? sender, RoutedEventArgs e)
     {
-        bool result = await AiClient.getModelList();
-        if (result)
+        string result = await AiClient.getModelList();
+        switch (result)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+            case "ok":
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+                break;
+            case "NullReferenceException":
+                ErrorTextBlock.Text = "Ошибка получения кода";
+                break;
         }
+        
+        
     }
 }

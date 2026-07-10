@@ -20,7 +20,7 @@
                         HorizontalAlignment="Stretch" 
                         Click="OnContinueClick" />
                 
-                <TextBlock Name="ResultTextBlock" Foreground="Gray" TextWrapping="Wrap" />
+                <TextBlock Name="ErrorTextBlock" Foreground="Red" TextWrapping="Wrap" />
         
         </StackPanel>
 </Window>

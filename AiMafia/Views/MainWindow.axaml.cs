@@ -38,8 +38,4 @@ public partial class MainWindow : Window
         if (ViewAiModels.Count > 0)
             ModelComboBox.SelectedIndex = 0;
     }
-
-
-
-
 }

@@ -15,7 +15,7 @@ public static class AiClient
 {
     public static string apiKey;
     
-    public static async Task<bool> getModelList(string key = null)
+    public static async Task<string> getModelList(string key = null)
     {
         if (key != null) apiKey = key;
         using HttpClient client = new HttpClient();
@@ -29,14 +29,17 @@ public static class AiClient
             
             var rootNode = JsonNode.Parse(responseBody);
             OpenRouterModel.SetModelList( rootNode["data"].Deserialize<List<OpenRouterModel>>());
-            
-            return true;
+            foreach (var item in OpenRouterModel.GetModelList())
+            {
+                Console.WriteLine(item.url);
+            }
+            return "ok";
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(e.GetType().Name);
             
-            return false;
+            return e.GetType().Name;
         }
     }
     
