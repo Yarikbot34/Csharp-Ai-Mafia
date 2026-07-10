@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:AiMafia.Controls"
+                    xmlns:models="using:AiMafia.Models"
+                    x:CompileBindings="True">
+
+    <ControlTheme x:Key="{x:Type controls:AiModelComboBox}" 
+                  TargetType="controls:AiModelComboBox"
+                  BasedOn="{StaticResource {x:Type ComboBox}}">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="PlaceholderText" Value="Выберите модель..."/>
+
+        <Setter Property="ItemTemplate">
+            <DataTemplate x:DataType="models:OpenRouterModel">
+                <Border Padding="10" BorderBrush="Gray" BorderThickness="1" Width="200" CornerRadius="5" Margin="0,2">
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="{Binding url}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock Text="{Binding description}" Foreground="Gray" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </Setter>
+
+        <Setter Property="SelectionBoxItemTemplate">
+            <DataTemplate x:DataType="models:OpenRouterModel">
+                <TextBlock Text="{Binding url}" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+            </DataTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

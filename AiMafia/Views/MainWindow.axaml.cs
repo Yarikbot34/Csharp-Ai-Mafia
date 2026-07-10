@@ -32,9 +32,9 @@ public partial class MainWindow : Window
         {
             ViewAiModels.Add(model);
         }
-
+        
         ModelComboBox.ItemsSource = ViewAiModels;
-            
+        
         if (ViewAiModels.Count > 0)
             ModelComboBox.SelectedIndex = 0;
     }

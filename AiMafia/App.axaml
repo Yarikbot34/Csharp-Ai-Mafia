@@ -11,4 +11,12 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Controls/AiModelComboBox.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
